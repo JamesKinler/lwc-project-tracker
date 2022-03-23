@@ -1,0 +1,267 @@
+@font-face {
+  font-family: "Poppins";
+  src: url('/resource/lwc_font/Poppins-Medium.ttf') format('TrueType');
+}
+
+body {
+  margin: 0;
+} 
+.wrapper{
+  min-height: 100vh;
+  background: #ccc;
+  display: flex;
+  flex-direction: column;
+}
+.header, .footer{
+  height: 50px;
+  background: rgb(255, 255, 255);
+  color: rgb(46, 46, 46);
+  font-size: x-large;
+  padding: 10px;
+}
+.content {
+  display: flex;
+  flex: 1;
+  background: #79848f;
+  color: #000; 
+}
+.columns{
+  display: flex;
+  flex:1;
+}
+
+.slds-combobox_container{
+  width: 250px !important;
+}
+
+.content[c-jobWrapper_jobWrapper]{
+  background: -webkit-linear-gradient(top, #8994a5, #475d60);
+  background: -moz-linear-gradient(left, #8994a5, #475d60);
+  background: -o-linear-gradient(left, #8994a5, #475d60);
+  background: linear-gradient(to right, #8994a5, #475d60);
+}
+
+.main{
+  flex: 1;
+  order: 1;
+  padding: 20px;
+}
+
+.main table a{
+  color: #fff;
+  /* position: relative; */
+}
+
+
+
+.closeButton{
+  --sds-c-button-neutral-color-background: rgb(0 0 0 / 18%);
+  --sds-c-button-text-color: #fff;
+  --sds-c-button-neutral-color-border: rgb(0 0 0 / 18%);
+}
+
+.fixedHeader{    
+  overflow: auto;
+  height: 100vh;
+
+}
+
+.lwc-icon{
+  --sds-c-icon-color-foreground-default: #fff;
+  margin-left: 10px;
+}
+
+.hoverTh:hover .lwc-icon{
+  --sds-c-icon-color-foreground-default: #b1daff;
+}
+
+.thHighlight {
+  background-color: #636d75;
+}
+
+.hoverTh:hover{
+  color: #b1daff;
+  font-weight: 600;
+}
+
+table{
+  border-collapse: separate;
+  border-spacing: 0 9px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-family: "Poppins", sans-serif;
+}
+
+
+th {
+  color: #fff;
+  background-color: #87919a;
+  border-bottom: 3px solid #858282;
+  border-left: 0.2px solid #858282;
+  font-weight: 400;
+  padding: 10px 10px;
+  position: sticky;
+  top: 0;
+  z-index: 4;
+}
+tr {
+  padding: 20px;
+  border: 1px solid black;
+  box-shadow: 5px 5px 3px 0.2px rgb(8 7 7 / 4%);
+  background-color: #87919a;
+}
+
+tr:hover{
+  background-color: #506170;
+}
+.highlight{
+  background-color: #4b535a;
+}
+th:first-child{
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+th:nth-child(7){
+  width: 360px;
+}
+
+th:nth-child(8){
+  width: 360px;
+}
+
+th:last-child{
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  
+}
+td{
+  padding: 10px;
+  color: #fff;
+  /* font-size: 12px; */
+  padding: 10px 15px;
+  border-left: 0.2px solid #858282;
+}
+td:first-child{
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+}
+td:last-child{
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+}
+td:nth-child(5) {
+  width: 140px;
+  text-align: center;
+}
+.liveDate{
+  display: block;
+}
+.sidebar{
+  background: #61737c;
+  order: 2;
+  width: 0%;
+  opacity: 0;
+  transition: 0.6s;
+  overflow: hidden;
+  pointer-events: none;
+  padding: 40px;
+  transform: (100%); 
+}
+.showSideBar{
+  width: 29%;
+  opacity: 1; 
+  transform: translateX(0%); 
+  pointer-events: all;
+  overflow: visible;
+}
+
+.float-right{
+  float: right;
+}
+
+.myclass{
+  --lwc-colorBackgroundInput: rgb(0 0 0 / 18%);
+  --sds-c-input-text-color: #fff;
+  --sds-c-input-text-color-focus: #fff;
+  --lwc-colorTextIconDefault: #fff;
+  --lwc-colorBorderInput: rgb(0 0 0 / 18%);
+  --lwc-colorBackgroundAlt: rgb(38 47 50);
+  --lwc-colorBorder:#64767e;
+  --lwc-colorTextDefault: #fff;
+  --lwc-colorBackgroundRowHover: #6b8fa1;
+}
+
+p.numberCount {
+  background: #467378;
+  color: #fff;
+  border-radius: 50px;
+  box-shadow: 5px 5px 3px 0.2px rgb(8 7 7 / 4%);
+  width: 30px;
+  font-weight: 600;
+  font-size: 16px;
+  display: flex;
+  height: 30px;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 19px;
+  margin-left: 19px;
+}
+
+.status-span{
+  display: block;
+}
+
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+
+

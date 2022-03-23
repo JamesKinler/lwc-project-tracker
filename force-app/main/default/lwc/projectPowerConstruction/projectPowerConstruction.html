@@ -1,0 +1,32 @@
+<template>
+    <template if:true={hideRow}>
+        <template for:each={newProjectConstSummary} for:item="powerConstSummary">
+            <tr key={powerConstSummary.Id} class="powerChildRow" data-key={powerConstSummary.Id} data-id={powerConstSummary.Case__r.ParentId} onclick={powerConstSideBar}>
+                <td class="tableIndent"></td>
+                <td class={selectedClass} style="border" colspan="2"><a onclick={navLink} data-id={powerConstSummary.Case__c}>{powerConstSummary.Name} {powerConstSummary.Case_Number__c}</a></td>
+                <td class={selectedClass} >{powerConstSummary.Scope__c}</td>
+                <td class={selectedClass} >{powerConstSummary.Current_Step_Label__c} <span style="display: block">
+                    <lightning-formatted-date-time
+                        value={powerConstSummary.Current_Step_Datevalue__c} year="numeric"
+                        day="2-digit" month="2-digit" time-zone="UTC">
+                    </lightning-formatted-date-time>
+                </span></td>
+                <td class={selectedClass} >{powerConstSummary.Next_Step_Label__c} <span style="display: block">
+                    <lightning-formatted-date-time value={powerConstSummary.Next_Step_Datevalue__c}
+                        year="numeric" day="2-digit" month="2-digit" time-zone="UTC">
+                    </lightning-formatted-date-time>
+                </span></td>
+                <td class={selectedClass} >
+                    <lightning-formatted-date-time
+                        value={powerConstSummary.Projected_Completion_Date__c} year="numeric"
+                        day="2-digit" month="2-digit" time-zone="UTC">
+                    </lightning-formatted-date-time>
+                    <span style={powerConstSummary.styleColor} class="status-span">{powerConstSummary.Completion_Difference_Text__c}</span>
+                </td>
+                <td class={selectedClass} >{powerConstSummary.Case_Priority__c}</td>
+                <td class={selectedClass} ><lightning-formatted-rich-text value={powerConstSummary.Case_Notes__c}></lightning-formatted-rich-text></td>
+                <td class={selectedClass} ><lightning-formatted-rich-text value={powerConstSummary.Project_Notes__c}></lightning-formatted-rich-text></td>
+            </tr>
+        </template>
+    </template>
+</template>

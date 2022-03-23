@@ -1,0 +1,197 @@
+@font-face {
+    font-family: "Poppins";
+    src: url('/resource/lwc_font/Poppins-Medium.ttf') format('TrueType');
+  }
+  
+  
+  .editJobButton{
+    --sds-c-button-neutral-color-background: rgb(0 0 0 / 18%);
+    --sds-c-button-text-color: #fff;
+    --sds-c-button-neutral-color-border: rgb(0 0 0 / 18%);
+  }
+  
+  .doneEditing{
+    --sds-c-button-neutral-color-background: rgb(0 0 0 / 18%);
+    --sds-c-button-text-color: #fff;
+    --sds-c-button-neutral-color-border: rgb(0 0 0 / 18%);
+  }
+  
+  th:first-child{
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+  }
+  th:last-child{
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+  
+  .editJobButton{
+    --sds-c-button-neutral-color-background: rgb(0 0 0 / 18%);
+    --sds-c-button-text-color: #fff;
+    --sds-c-button-neutral-color-border: rgb(0 0 0 / 18%);
+  }
+  
+  .doneEditing{
+    --sds-c-button-neutral-color-background: rgb(0 0 0 / 18%);
+    --sds-c-button-text-color: #fff;
+    --sds-c-button-neutral-color-border: rgb(0 0 0 / 18%);
+  }
+  
+  .ahead-border{
+      border: 2px solid green;
+      color: #fff;
+      font-size: 12px;
+      padding: 5px 8px;
+      border-radius: 15px;
+  }
+  .onSchedule-border{
+      border: 2px solid #E1AD01;
+      font-size: 12px;
+      padding: 5px 8px;
+      border-radius: 15px;
+      color: #fff;
+  }
+  .behind-border{
+      color: #fff;
+      border: 2px solid #cb1515;
+      border-radius: 15px;
+      font-size: 12px;
+      padding: 5px 8px;
+  }
+  .no-border{
+      border: none;
+  }
+  .ahead-fill{
+      background-color: #096c09;
+      border-radius: 15px;
+      color: #fff;
+      font-size: 12px;
+      padding: 5px 8px;
+  }
+  .onSchedule-fill{
+      background-color: #E1AD01;
+      color: #fff;
+      border-radius: 15px;
+      font-size: 12px;
+      padding: 5px 8px;
+  }
+  .behind-fill{
+      background-color: #cb1515;
+      color: #fff !important;
+      border-radius: 15px;
+      font-size: 12px;
+      padding: 5px 8px;
+  }
+  
+  table{
+      border-collapse: separate;
+      border-spacing: 0 9px;
+      border-radius: 50px;
+      font-family: "Poppins", sans-serif;
+    }
+    table a{
+      color: #fff;
+    }
+    th {
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 11px 10px;
+    }
+    tr {
+      padding: 20px;
+      border: 1px solid black;
+      color: red;
+      /* box-shadow: 5px 5px 3px 0.2px rgb(8 7 7 / 4%); */
+      /* background-color: red; */
+      /* background-color: rgba( 255,255, 255, 0.1); */
+    }
+    tr:first-child {
+      box-shadow: none;
+    }
+  
+    td:first-child{
+      border-bottom-left-radius: 5px;
+      border-top-left-radius: 5px;
+    }
+    td:last-child{
+      border-bottom-right-radius: 5px;
+      border-top-right-radius: 5px;
+    }
+  
+    .inputFeild{
+      color: #000;
+    }
+
+    .editInputField{
+        --slds-c-input-text-color: #766969;
+    }
+  
+  td {
+      background-color: rgba( 255,255, 255, 0.1);
+      padding: 10px;
+      color: #fff;
+      font-size: 14px;
+      padding: 10px 15px;
+      vertical-align: middle;
+      border-left: 0.2px solid #858282;
+      box-shadow: 0px 4px 3px 0.2px rgb(8 7 7 / 4%);
+  }
+
+  tr:hover{
+    background-color: #506170;
+  }
+  
+  .equipStatus{
+    text-align: center;
+  }
+
+  .input_colors{
+    color: #766969;
+  }
+  
+  .reported-field{
+    text-align: center;
+  }
+
+  :host { 
+    display: contents;
+    /* background-color: red;  */
+  }
+
+  .powerChildRow{
+    /* display: contents; */
+    border: none;
+  }
+
+  a{
+    color: #fff;
+  }
+
+  .tableIndent{
+    border: none !important;
+    width: 22px;
+    margin: 0;
+    padding: 0;
+    background-color: #79848f;
+    box-shadow: none;
+  }
+
+  .border{
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+  }
+
+  .childHighlight{
+    background-color: #4b535a;
+  }
+
+  .status-span{
+    display: block;
+  }
+
+  td:nth-child(6) {
+    width: 140px;
+    text-align: center;
+  }
+

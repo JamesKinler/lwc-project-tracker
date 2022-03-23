@@ -1,0 +1,114 @@
+<template>
+    <div data-id="scrollTop"></div>
+    <div>
+        <div class="wrapper">
+            <div class="content">
+                <div class="columns">
+                    <div class="main">
+                        <div style="display: flex;">
+                            <lightning-combobox class="myclass" name="Select" value="AP-Add"
+                                options={options} onchange={projectSelected} style="width: 250px;">
+                            </lightning-combobox>
+                            <p class="numberCount">{count}</p>
+                        </div>
+                        <div class="fixedHeader">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th data-id="projectNameId" colspan="3" onclick={userSorted} class="hoverTh">Project Name
+                                            <template if:false={projectNameSort}>
+                                                <lightning-icon class="lwc-icon" size="xx-small" icon-name="utility:chevrondown" alternative-text="Chevrondown" title="Chevrondown" name="Project Name"></lightning-icon>
+                                            </template>
+                                            <template if:true={projectNameSort}>
+                                                <lightning-icon class="lwc-icon" size="xx-small" icon-name="utility:chevronup" alternative-text="Chevronup" title="Chevronup" name="Project Name"></lightning-icon>
+                                            </template>
+                                        </th>
+                                        <th>Project Scope</th>
+                                        <th data-id="currentStepId" onclick={userSorted} class="hoverTh">Current Step 
+                                            <template if:false={currentStepSort}>
+                                                <lightning-icon class="lwc-icon" size="xx-small" icon-name="utility:chevrondown" alternative-text="Chevrondown" title="Chevrondown" name="Current Step"></lightning-icon>
+                                            </template>
+                                            <template if:true={currentStepSort}>
+                                                <lightning-icon class="lwc-icon" size="xx-small" icon-name="utility:chevronup" alternative-text="Chevronup" title="Chevronup" name="Current Step"></lightning-icon>
+                                            </template>
+                                        </th>
+                                        <th data-id="nextStepId" onclick={userSorted} class="hoverTh">Next Step
+                                            <template if:false={nextStepSorted}>
+                                                <lightning-icon class="lwc-icon" size="xx-small" icon-name="utility:chevrondown" alternative-text="Chevrondown" title="Chevrondown" name="Next Step"></lightning-icon>
+                                            </template>
+                                            <template if:true={nextStepSorted}>
+                                                <lightning-icon class="lwc-icon" size="xx-small" icon-name="utility:chevronup" alternative-text="Chevronup" title="Chevronup" name="Next Step"></lightning-icon>
+                                            </template>
+                                        </th>
+                                        <th data-id="projectLiveId" onclick={userSorted} class="hoverTh">Project GoLive Date
+                                            <template if:false={projectGoLiveSorted}>
+                                                <lightning-icon class="lwc-icon" size="xx-small" icon-name="utility:chevrondown" alternative-text="Chevrondown" title="Chevrondown" name="Project GoLive Date"></lightning-icon>
+                                            </template>
+                                            <template if:true={projectGoLiveSorted}>
+                                                <lightning-icon class="lwc-icon" size="xx-small" icon-name="utility:chevronup" alternative-text="Chevronup" title="Chevronup" name="Project GoLive Date"></lightning-icon>
+                                            </template>
+                                        </th>
+                                        <th data-id="casePriorityId" onclick={userSorted} class="hoverTh">Case Priority
+                                            <template if:false={casePrioritySorted}>
+                                                <lightning-icon class="lwc-icon" size="xx-small" icon-name="utility:chevrondown" alternative-text="Chevrondown" title="Chevrondown" name="Case Priority"></lightning-icon>
+                                            </template>
+                                            <template if:true={casePrioritySorted}>
+                                                <lightning-icon class="lwc-icon" size="xx-small" icon-name="utility:chevronup" alternative-text="Chevronup" title="Chevronup" name="Case Priority"></lightning-icon>
+                                            </template>
+                                        </th>
+                                        <th>Case Notes</th>
+                                        <th>Project Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <template for:each={newSummaryArray} for:item="projectSummary">
+                                        <tr style={projectSummary.hideChild} key={projectSummary.Id} onclick={handleAccountClick} data-key={projectSummary.Id} class="tableRowShow" data-id="parentRow">
+                                            <td data-label="Project Name" colspan="3"><a onclick={navLink} data-id={projectSummary.Case__c}>{projectSummary.Name} - {projectSummary.Case_Number__c}</a></td>
+                                            <td data-label="Project Scope">{projectSummary.Scope__c}</td>
+                                            <td data-label="Current Step">{projectSummary.Current_Step_Label__c}
+                                                <span style="display: block;">
+                                                    <lightning-formatted-date-time
+                                                        value={projectSummary.Current_Step_Datevalue__c} year="numeric"
+                                                        day="2-digit" month="2-digit" time-zone="UTC">
+                                                    </lightning-formatted-date-time>
+                                                </span>
+                                            </td>
+                                            <td data-label="Next Step">
+                                                {projectSummary.Next_Step_Label__c}
+                                                <span style="display:block;">
+                                                    <lightning-formatted-date-time value={projectSummary.Next_Step_Datevalue__c}
+                                                        year="numeric" day="2-digit" month="2-digit" time-zone="UTC">
+                                                    </lightning-formatted-date-time>
+                                                </span>
+                                            </td>
+                                            <td data-label="Next Step">
+                                                <lightning-formatted-date-time
+                                                    value={projectSummary.Projected_Completion_Date__c} year="numeric"
+                                                    day="2-digit" month="2-digit" time-zone="UTC">
+                                                </lightning-formatted-date-time>
+                                                <span style={projectSummary.styleColor} class="status-span">{projectSummary.Completion_Difference_Text__c}</span>
+                                            </td>
+                                            <td data-label="Case Priority">
+                                                {projectSummary.Case_Priority__c}
+                                            </td>
+                                            <td data-label="Case Notes"><lightning-formatted-rich-text value={projectSummary.Case_Notes__c}></lightning-formatted-rich-text></td>
+                                            <td data-label="Project Notes"><lightning-formatted-rich-text value={projectSummary.Project_Notes__c}></lightning-formatted-rich-text></td>
+                                        </tr>
+                                        <template if:true={noChildern}>
+                                            <c-project-Power-Construction key={projectSummary.Id} onemptytablerow={onEmptyTableRow} get-power-const-id={projectSummary.Case__c} onpowerconstid={handlePowerConstId}></c-project-Power-Construction>
+                                        </template>
+                                    </template>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div><!-- end of main container-->
+                    <div class="sidebar" data-id="divblock">
+                        <lightning-button label="Close X" title="Non-primary action" onclick={handleClose} class="slds-m-left_x-small float-right closeButton"></lightning-button>
+                        <c-project-Details get-id-from-parent={selectedAccountId} onparentrefresh={onParentRefresh} onreportedclosed={onReportedClosed}></c-project-Details>
+                        <lightning-button label="Close X" title="Non-primary action" onclick={handleClose} class="slds-m-left_x-small float-right closeButton"></lightning-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

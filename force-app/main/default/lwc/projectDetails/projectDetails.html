@@ -1,0 +1,188 @@
+<template>
+    <template if:true={userEdit}>
+        <template if:false={editFields}>
+            <lightning-button class="editJobButton" title="Neutral action" label="Edit Job" onclick={handleEdit}>
+            </lightning-button>
+        </template>
+        <template if:true={editFields}>
+            <lightning-button class="doneEditing" title="Neutral action" label="Finish Edit" onclick={updateProjectFields}>
+            </lightning-button>
+        </template>
+    </template>
+    <template if:false={editFields}>
+        <table>
+            <thead>
+                <template for:each={jobInfoArray} for:item="info">
+                    <tr key={info.Id}>
+                        <th><a onclick={navLink} data-id={info.case_c}>{info.case_name} {info.case_number}</a></th>
+                        <th colspan="2" class="caseStatus">Case Status <span class={info.case_status_color}>{info.case_status}</span></th>
+                    </tr>
+                </template>
+            </thead>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Projected</th>
+                    <th>Actual</th>
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={projectDetailsData} for:item="towerData">
+                    <tr key={towerData.Id}>
+                        <td>Tower Case Created</td>
+                        <td colspan="3">
+                            <span>
+                                <lightning-formatted-date-time
+                                    value={towerData.Tower_Case_Created__c}
+                                    year="numeric"
+                                    day="2-digit"
+                                    month="2-digit"
+                                    time-zone="UTC"  
+                                >                  
+                                </lightning-formatted-date-time>
+                            </span>
+                        </td>
+                    </tr>
+                </template>
+                <template for:each={mainArray} for:item="data">
+                    <tr key={data.Id}>
+                        <td>{data.Label}</td>
+                        <td>
+                            <span class={data.PStyle}>
+                                <lightning-formatted-date-time
+                                    value={data.Projected}
+                                    year="numeric"
+                                    day="2-digit"
+                                    month="2-digit"
+                                    time-zone="UTC"  
+                                >                  
+                                </lightning-formatted-date-time>
+                            </span>
+                        </td>
+                        <td>
+                            <span class={data.AStyle}>
+                                <lightning-formatted-date-time
+                                    value={data.Acutal}
+                                    year="numeric"
+                                    day="2-digit"
+                                    month="2-digit"
+                                    time-zone="UTC"  
+                                >                  
+                                </lightning-formatted-date-time>
+                            </span>
+                        </td>
+                    </tr>
+                </template>
+                <template for:each={projectDetailsData} for:item="towerData">
+                    <tr key={towerData.Id}>
+                        <td>Tower Case Closed</td>
+                        <td></td>
+                        <td>
+                            <span>
+                                <lightning-formatted-date-time
+                                    value={towerData.Tower_Case_Closed__c}
+                                    year="numeric"
+                                    day="2-digit"
+                                    month="2-digit"
+                                    time-zone="UTC"  
+                                >                  
+                                </lightning-formatted-date-time>
+                            </span>
+
+                        </td>
+                    </tr>
+                    <tr key={towerData.Id}>
+                        <td>Equipment Status</td>
+                        <td colspan="2">{towerData.Equipment_Status__c}</td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </template>
+    <template if:true={editFields}>
+        <table>
+            <thead>
+                <template for:each={jobInfoArray} for:item="info">
+                    <tr key={info.Id}>
+                        <th colspan="2" ><a onclick={navLink} data-id={info.case_c}>{info.case_name} {info.case_number}</a></th>
+                        <th class="caseStatus">Case Status <span class={info.case_status_color}>{info.case_status}</span></th>
+                    </tr>
+                </template>
+            </thead>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Projected</th>
+                    <th>Actual</th>
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={mainArray} for:item="data">
+                    <tr key={data.Id}>
+                        <td>{data.Label}</td>
+                        <td>
+                            <span>
+                                <lightning-formatted-date-time
+                                    value={data.Projected}
+                                    year="numeric"
+                                    day="2-digit"
+                                    month="2-digit"
+                                    time-zone="UTC"  
+                                >                  
+                                </lightning-formatted-date-time>
+                            </span>
+                        </td>
+                        <td class="input_colors">
+                            <lightning-input 
+                                    type="date" 
+                                    date-style="short"
+                                    data-name={data.name} 
+                                    name={data.name} 
+                                    class="editInputField"
+                                    value={data.Acutal} 
+                                >
+                            </lightning-input>
+                        </td>
+                    </tr>
+                </template>
+                <template for:each={projectDetailsData} for:item="notes">
+                        <tr key={notes.Id}>
+                            <td colspan="2">Equipment Status</td>
+                            <td>
+                                <lightning-combobox class="editInputField" name="Equipment_Status__c" value={notes.Equipment_Status__c}
+                                options={equipmentStatus} style="width: 250px;">
+                                </lightning-combobox>
+                            </td>
+                        </tr>
+                        <tr key={notes.Id}>
+                            <td colspan="2">Notes</td>
+                            <td class="input_colors">
+                                <lightning-input-rich-text
+                                    variant = "label-hidden" 
+                                    name="Project_Notes__c"
+                                    value={notes.Project_Notes__c}
+                                ></lightning-input-rich-text>
+                            </td>
+                        </tr>
+                        <tr key={notes.Id}>
+                            <td colspan="2">Reported</td>
+                            <td>
+                                <lightning-input name="Reported__c"
+                                value={notes.Reported__c} type="checkbox"></lightning-input>
+                            </td>
+                        </tr>
+                </template>
+            </tbody>
+        </table>
+    </template>
+    <template if:true={userEdit}>
+        <template if:false={editFields}>
+            <lightning-button class="editJobButton" title="Neutral action" label="Edit Job" onclick={handleEdit}>
+            </lightning-button>
+        </template>
+        <template if:true={editFields}>
+            <lightning-button class="doneEditing" title="Neutral action" label="Finish Edit" onclick={updateProjectFields}>
+            </lightning-button>
+        </template>
+    </template>
+</template>
